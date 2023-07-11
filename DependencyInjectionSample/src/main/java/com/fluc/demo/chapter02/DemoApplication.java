@@ -11,7 +11,7 @@ public class DemoApplication {
                 .getBean(DemoApplication.class).execute();
     }
 
-    @Autowired// 스프링 프레임워크에서 인스턴스를 ㅅㄷ
+    @Autowired// 스프링 프레임워크에서 인스턴스를 생성한다
     Greet greet;
 
     private void execute(){
