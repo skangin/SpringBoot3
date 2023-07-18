@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>베이스: 레이아웃</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+<header>
+  <h1>문제 풀이 애플리케이션</h1>
+  <h3 th:text="${title}">제목</h3>
+  <!--/* 등록/변경 완료 메시지 */-->
+  <p th:if="${complete}" th:text="${complete}" style="color:blue"></p>
+  <!--등록과 변경 처리를 분리-->
+  <form method="POST" th:action="${testForm.newTest} ? @{/test/insert} : @{/test/update}" th:object="${testForm}">
+    <!--th:field 속성에 '*{필드명}'을 지정-->
+    <label>퀴즈 내용: </label><br>
+    <textarea rows="5" cols="50" th:field="*{question}"></textarea>
+    <br>
+    <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}"
+         style="color:red"></div>
+    <label>퀴즈 정답: </label><br>
+    <input type="radio" value="true" th:field="*{answer}" > O
+    <input type="radio" value="false" th:field="*{answer}" > X
+    <br>
+    <div th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}"
+         style="color:red"></div>
+    <label>작성자: </label><br>
+    <input type="text" th:field="*{author}" />
+    <br>
+    <div th:if="${#fields.hasErrors('author')}" th:errors="*{author}"
+         style="color:red"></div>
+    <input th:if="${id}" type="hidden" th:field="*{id}" >
+    <input type="submit" value="저장">
+  </form>
+  <br>
+  <!--여기까지가 상단 영역 부분-->
+
+  <hr><!--신규등록인 경우만 보임-->
+  <div th:if="${testForm.newTest}" style="margin: 10px">
+    <h3>등록된 퀴즈 목록 <a th:href="@{/test/play}">플레이</a><br></h3>
+    <!--/* 삭제 완료 메시지 */-->
+    <p th:if="${delcomplete}" th:text="${delcomplete}" style="color:blue"></p>
+    <p th:if="${msg}" th:text="${msg}" style="color:red"></p>
+    <!--퀴즈 정보가 있으면 보임-->
+    <table border="1" th:unless="${#lists.isEmpty(list)}"
+           style="table-layout: fixed;">
+      <tr>
+        <th>ID</th>
+        <th>내용</th>
+        <th>해답</th>
+        <th>작성자</th>
+        <th>변경</th>
+        <th>삭제</th>
+      </tr>
+      <tr th:each="obj : ${list}" align="center">
+        <td th:text="${obj.id}"></td>
+        <td th:text="${obj.question}" align="left"></td>
+        <td th:text="${obj.answer} == true?'O':'X'"></td>
+        <td th:text="${obj.author}"></td>
+        <!--/* 변경 버튼 */-->
+        <td>
+          <form method="GET" th:action="@{/test/{id}(id=${obj.id})}">
+            <input type="submit" value="변경">
+          </form>
+        </td>
+        <!--/* 삭제 버튼 */-->
+        <td>
+          <form method="POST" th:action="@{/test/delete}">
+            <input type="hidden" name="id" th:value="${obj.id}">
+            <input type="submit" value="삭제">
+          </form>
+        </td>
+      </tr>
+    </table>
+    <!--퀴즈 정보가 있으면 보임-->
+    <p th:if="${#lists.isEmpty(list)}">등록된 퀴즈가 없습니다.</p>
+  </div><!--신규등록인 경우만 보임-->
+
+  <p th:unless="${testForm.newTest}">
+    <a href="#" th:href="@{/test}">CRUD 화면에 돌아가기</a>
+  </p>
+
+  <div id="lib_link">
+    <div id="lib_link_content">
+      <ul>
+        <li class="first_child"><a href="#" >강북구립도서관</a></li>
+        <li><a href="#">강북문화정보도서관</a></li>
+        <li class="big_child"><a href="#">강북청소년문화정보도서관</a></li>
+        <li><a href="#">솔샘문화정보도서관</a></li>
+        <li><a href="#">송중문화정보도서관</a></li>
+        <li><a href="#">수유문화정보도서관</a></li>
+        <li class="on"><a href="#">미아문화정보도서관</a></li>
+        <li><a href="#">삼각산어린이도서관</a></li>
+        <li><a href="#">전자책도서관</a></li>
+        <li><a href="#">새마을문고</a></li>
+      </ul>
+    </div><!-- id="lib_link_content" end -->
+  </div><!-- id="lib_link" end -->
+  <div id="gnb_wrap">
+    <div id="gnb">
+      <h1 id="name_logo"><a href="#"><img src="/images/mia_logo.png" alt="도서관명&로고"/></a></h1>
+      <div id="search_box">
+        <input type="text" name="search" placeholder="검색할 도서정보를 입력하세요" id="search"/>
+        <a href="#" class="search_btn"></a>
+      </div><!-- search_box end -->
+      <div id="utility">
+        <a href="#" class="first login">로그인</a>
+        <a href="#">회원가입</a>
+        <a href="#">즐겨찾기</a>
+        <span>글자크기</span>
+        <a href="#" class="plus"></a>
+        <a href="#" class="minus"></a>
+      </div>
+    </div><!-- id="gnb" end -->
+  </div><!-- id="gnb_wrap" end -->
+  <div id="menu_wrap">
+    <div id="menu">
+      <ul class="onedepth cf">
+        <li class="od1"><a href="sub1/sub1.html" title="소장자료 검색" tabindex="1">소장자료 검색</a>
+          <div class="twodepth_wrap">
+            <ul class="twodepth">
+              <li class="td1"><a href="sub1/sub1.html"></a>
+                <ul>
+                  <li><a href="sub1/sub1.html" title="통합검색" >통합검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="신착도서 검색" >신착도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="간행물 검색" >간행물 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="비도서 검색" >비도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기대출도서 검색" >인기대출도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="추천도서" >추천도서</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기테마검색" >인기테마검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="스마트도서관" >스마트도서관</a></li>
+                </ul>
+              </li>
+              <li class="td2"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="E-Book" >E-Book</a></li>
+                  <li><a href="sub2/sub2.html"  title="E-Learning" >E-Learning</a></li>
+                </ul>
+              </li>
+              <li class="td3"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="공지사항" >공지사항</a></li>
+                  <li><a href="sub3/sub3.html"  title="행사안내" >행사안내</a></li>
+                  <li><a href="sub3/sub3.html"  title="자주하는 질문" >자주하는 질문</a></li>
+                  <li><a href="sub3/sub3.html"  title="단순질문함" >단순질문함</a></li>
+                  <li><a href="sub3/sub3.html"  title="고객의견함" >고객의견함</a></li>
+                  <li><a href="sub3/sub3.html"  title="자료실" >자료실</a></li>
+                  <li><a href="sub3/sub3.html"  title="설문조사" >설문조사</a></li>
+                  <li><a href="sub3/sub3.html"  title="자원봉사자 모집" >자원봉사자 모집</a></li>
+                </ul>
+              </li>
+              <li class="td4"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="문화행사 안내" >문화행사 안내</a></li>
+                  <li><a href="sub1/sub1.html"  title="문화행사 신청" >문화행사 신청</a></li>
+                </ul>
+              </li>
+              <li class="td5"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="인사말 & 연혁" >인사말 & 연혁</a></li>
+                  <li><a href="sub2/sub2.html"  title="시설 & 자료현황" >시설 & 자료현황</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용안내" >이용안내</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용자 서비스 헌장" >이용자 서비스 헌장</a></li>
+                  <li><a href="sub2/sub2.html"  title="조직도" >조직도</a></li>
+                  <li><a href="sub2/sub2.html"  title="상호대차&지하철 예약 대출" >상호대차&지하철 예약 대출</a></li>
+                  <li><a href="sub2/sub2.html"  title="책이음 서비스" >책이음 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="책나래 서비스" >책나래 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="북스타트" >북스타트</a></li>
+                  <li><a href="sub2/sub2.html"  title="오시는 길" >오시는 길</a></li>
+                  <li><a href="sub2/sub2.html"  title="새마을문고" >새마을문고</a></li>
+                </ul>
+              </li>
+              <li class="td6"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="대출·연장·예약·조회" >대출·연장·예약·조회</a></li>
+                  <li><a href="sub3/sub3.html"  title="희망도서 신청" >희망도서 신청</a></li>
+                  <li><a href="sub3/sub3.html"  title="바구니 보기" >바구니 보기</a></li>
+                  <li><a href="sub3/sub3.html"  title="검색 History" >검색 History</a></li>
+                  <li><a href="sub3/sub3.html"  title="나의 참여내역" >나의 참여내역</a></li>
+                </ul>
+              </li>
+            </ul><!-- class="twodepth" end -->
+          </div><!-- class="twodepth_wrap" end -->
+        </li>
+        <li class="od2"><a href="sub2/sub2.html" title="전자책 도서관" tabindex="2">전자책 도서관</a>
+          <div class="twodepth_wrap">
+            <ul class="twodepth">
+              <li class="td1"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="통합검색" >통합검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="신착도서 검색" >신착도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="간행물 검색" >간행물 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="비도서 검색" >비도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기대출도서 검색" >인기대출도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="추천도서" >추천도서</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기테마검색" >인기테마검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="스마트도서관" >스마트도서관</a></li>
+                </ul>
+              </li>
+              <li class="td2"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="E-Book" >E-Book</a></li>
+                  <li><a href="sub2/sub2.html"  title="E-Learning" >E-Learning</a></li>
+                </ul>
+              </li>
+              <li class="td3"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="공지사항" >공지사항</a></li>
+                  <li><a href="sub3/sub3.html"  title="행사안내" >행사안내</a></li>
+                  <li><a href="sub3/sub3.html"  title="자주하는 질문" >자주하는 질문</a></li>
+                  <li><a href="sub3/sub3.html"  title="단순질문함" >단순질문함</a></li>
+                  <li><a href="sub3/sub3.html"  title="고객의견함" >고객의견함</a></li>
+                  <li><a href="sub3/sub3.html"  title="자료실" >자료실</a></li>
+                  <li><a href="sub3/sub3.html"  title="설문조사" >설문조사</a></li>
+                  <li><a href="sub3/sub3.html"  title="자원봉사자 모집" >자원봉사자 모집</a></li>
+                </ul>
+              </li>
+              <li class="td4"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="문화행사 안내" >문화행사 안내</a></li>
+                  <li><a href="sub1/sub1.html"  title="문화행사 신청" >문화행사 신청</a></li>
+                </ul>
+              </li>
+              <li class="td5"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="인사말 & 연혁" >인사말 & 연혁</a></li>
+                  <li><a href="sub2/sub2.html"  title="시설 & 자료현황" >시설 & 자료현황</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용안내" >이용안내</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용자 서비스 헌장" >이용자 서비스 헌장</a></li>
+                  <li><a href="sub2/sub2.html"  title="조직도" >조직도</a></li>
+                  <li><a href="sub2/sub2.html"  title="상호대차&지하철 예약 대출" >상호대차&지하철 예약 대출</a></li>
+                  <li><a href="sub2/sub2.html"  title="책이음 서비스" >책이음 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="책나래 서비스" >책나래 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="북스타트" >북스타트</a></li>
+                  <li><a href="sub2/sub2.html"  title="오시는 길" >오시는 길</a></li>
+                  <li><a href="sub2/sub2.html"  title="새마을문고" >새마을문고</a></li>
+                </ul>
+              </li>
+              <li class="td6"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="대출·연장·예약·조회" >대출·연장·예약·조회</a></li>
+                  <li><a href="sub3/sub3.html"  title="희망도서 신청" >희망도서 신청</a></li>
+                  <li><a href="sub3/sub3.html"  title="바구니 보기" >바구니 보기</a></li>
+                  <li><a href="sub3/sub3.html"  title="검색 History" >검색 History</a></li>
+                  <li><a href="sub3/sub3.html"  title="나의 참여내역" >나의 참여내역</a></li>
+                </ul>
+              </li>
+            </ul><!-- class="twodepth" end -->
+          </div><!-- class="twodepth_wrap" end -->
+        </li>
+        <li class="od3"><a href="sub3/sub3.html" title="참여마당" tabindex="3">참여마당</a>
+          <div class="twodepth_wrap">
+            <ul class="twodepth">
+              <li class="td1"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="통합검색" >통합검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="신착도서 검색" >신착도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="간행물 검색" >간행물 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="비도서 검색" >비도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기대출도서 검색" >인기대출도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="추천도서" >추천도서</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기테마검색" >인기테마검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="스마트도서관" >스마트도서관</a></li>
+                </ul>
+              </li>
+              <li class="td2"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="E-Book" >E-Book</a></li>
+                  <li><a href="sub2/sub2.html"  title="E-Learning" >E-Learning</a></li>
+                </ul>
+              </li>
+              <li class="td3"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="공지사항" >공지사항</a></li>
+                  <li><a href="sub3/sub3.html"  title="행사안내" >행사안내</a></li>
+                  <li><a href="sub3/sub3.html"  title="자주하는 질문" >자주하는 질문</a></li>
+                  <li><a href="sub3/sub3.html"  title="단순질문함" >단순질문함</a></li>
+                  <li><a href="sub3/sub3.html"  title="고객의견함" >고객의견함</a></li>
+                  <li><a href="sub3/sub3.html"  title="자료실" >자료실</a></li>
+                  <li><a href="sub3/sub3.html"  title="설문조사" >설문조사</a></li>
+                  <li><a href="sub3/sub3.html"  title="자원봉사자 모집" >자원봉사자 모집</a></li>
+                </ul>
+              </li>
+              <li class="td4"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="문화행사 안내" >문화행사 안내</a></li>
+                  <li><a href="sub1/sub1.html"  title="문화행사 신청" >문화행사 신청</a></li>
+                </ul>
+              </li>
+              <li class="td5"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="인사말 & 연혁" >인사말 & 연혁</a></li>
+                  <li><a href="sub2/sub2.html"  title="시설 & 자료현황" >시설 & 자료현황</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용안내" >이용안내</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용자 서비스 헌장" >이용자 서비스 헌장</a></li>
+                  <li><a href="sub2/sub2.html"  title="조직도" >조직도</a></li>
+                  <li><a href="sub2/sub2.html"  title="상호대차&지하철 예약 대출" >상호대차&지하철 예약 대출</a></li>
+                  <li><a href="sub2/sub2.html"  title="책이음 서비스" >책이음 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="책나래 서비스" >책나래 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="북스타트" >북스타트</a></li>
+                  <li><a href="sub2/sub2.html"  title="오시는 길" >오시는 길</a></li>
+                  <li><a href="sub2/sub2.html"  title="새마을문고" >새마을문고</a></li>
+                </ul>
+              </li>
+              <li class="td6"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="대출·연장·예약·조회" >대출·연장·예약·조회</a></li>
+                  <li><a href="sub3/sub3.html"  title="희망도서 신청" >희망도서 신청</a></li>
+                  <li><a href="sub3/sub3.html"  title="바구니 보기" >바구니 보기</a></li>
+                  <li><a href="sub3/sub3.html"  title="검색 History" >검색 History</a></li>
+                  <li><a href="sub3/sub3.html"  title="나의 참여내역" >나의 참여내역</a></li>
+                </ul>
+              </li>
+            </ul><!-- class="twodepth" end -->
+          </div><!-- class="twodepth_wrap" end -->
+        </li>
+        <li class="od4"><a href="sub1/sub1.html" title="강좌/문화행사" tabindex="4">강좌/문화행사</a>
+          <div class="twodepth_wrap">
+            <ul class="twodepth">
+              <li class="td1"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="통합검색" >통합검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="신착도서 검색" >신착도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="간행물 검색" >간행물 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="비도서 검색" >비도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기대출도서 검색" >인기대출도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="추천도서" >추천도서</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기테마검색" >인기테마검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="스마트도서관" >스마트도서관</a></li>
+                </ul>
+              </li>
+              <li class="td2"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="E-Book" >E-Book</a></li>
+                  <li><a href="sub2/sub2.html"  title="E-Learning" >E-Learning</a></li>
+                </ul>
+              </li>
+              <li class="td3"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="공지사항" >공지사항</a></li>
+                  <li><a href="sub3/sub3.html"  title="행사안내" >행사안내</a></li>
+                  <li><a href="sub3/sub3.html"  title="자주하는 질문" >자주하는 질문</a></li>
+                  <li><a href="sub3/sub3.html"  title="단순질문함" >단순질문함</a></li>
+                  <li><a href="sub3/sub3.html"  title="고객의견함" >고객의견함</a></li>
+                  <li><a href="sub3/sub3.html"  title="자료실" >자료실</a></li>
+                  <li><a href="sub3/sub3.html"  title="설문조사" >설문조사</a></li>
+                  <li><a href="sub3/sub3.html"  title="자원봉사자 모집" >자원봉사자 모집</a></li>
+                </ul>
+              </li>
+              <li class="td4"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="문화행사 안내" >문화행사 안내</a></li>
+                  <li><a href="sub1/sub1.html"  title="문화행사 신청" >문화행사 신청</a></li>
+                </ul>
+              </li>
+              <li class="td5"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="인사말 & 연혁" >인사말 & 연혁</a></li>
+                  <li><a href="sub2/sub2.html"  title="시설 & 자료현황" >시설 & 자료현황</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용안내" >이용안내</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용자 서비스 헌장" >이용자 서비스 헌장</a></li>
+                  <li><a href="sub2/sub2.html"  title="조직도" >조직도</a></li>
+                  <li><a href="sub2/sub2.html"  title="상호대차&지하철 예약 대출" >상호대차&지하철 예약 대출</a></li>
+                  <li><a href="sub2/sub2.html"  title="책이음 서비스" >책이음 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="책나래 서비스" >책나래 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="북스타트" >북스타트</a></li>
+                  <li><a href="sub2/sub2.html"  title="오시는 길" >오시는 길</a></li>
+                  <li><a href="sub2/sub2.html"  title="새마을문고" >새마을문고</a></li>
+                </ul>
+              </li>
+              <li class="td6"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="대출·연장·예약·조회" >대출·연장·예약·조회</a></li>
+                  <li><a href="sub3/sub3.html"  title="희망도서 신청" >희망도서 신청</a></li>
+                  <li><a href="sub3/sub3.html"  title="바구니 보기" >바구니 보기</a></li>
+                  <li><a href="sub3/sub3.html"  title="검색 History" >검색 History</a></li>
+                  <li><a href="sub3/sub3.html"  title="나의 참여내역" >나의 참여내역</a></li>
+                </ul>
+              </li>
+            </ul><!-- class="twodepth" end -->
+          </div><!-- class="twodepth_wrap" end -->
+        </li>
+        <li class="od5"><a href="sub2/sub2.html" title="도서관 안내" tabindex="5">도서관 안내</a>
+          <div class="twodepth_wrap">
+            <ul class="twodepth">
+              <li class="td1"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="통합검색" >통합검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="신착도서 검색" >신착도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="간행물 검색" >간행물 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="비도서 검색" >비도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기대출도서 검색" >인기대출도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="추천도서" >추천도서</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기테마검색" >인기테마검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="스마트도서관" >스마트도서관</a></li>
+                </ul>
+              </li>
+              <li class="td2"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="E-Book" >E-Book</a></li>
+                  <li><a href="sub2/sub2.html"  title="E-Learning" >E-Learning</a></li>
+                </ul>
+              </li>
+              <li class="td3"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="공지사항" >공지사항</a></li>
+                  <li><a href="sub3/sub3.html"  title="행사안내" >행사안내</a></li>
+                  <li><a href="sub3/sub3.html"  title="자주하는 질문" >자주하는 질문</a></li>
+                  <li><a href="sub3/sub3.html"  title="단순질문함" >단순질문함</a></li>
+                  <li><a href="sub3/sub3.html"  title="고객의견함" >고객의견함</a></li>
+                  <li><a href="sub3/sub3.html"  title="자료실" >자료실</a></li>
+                  <li><a href="sub3/sub3.html"  title="설문조사" >설문조사</a></li>
+                  <li><a href="sub3/sub3.html"  title="자원봉사자 모집" >자원봉사자 모집</a></li>
+                </ul>
+              </li>
+              <li class="td4"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="문화행사 안내" >문화행사 안내</a></li>
+                  <li><a href="sub1/sub1.html"  title="문화행사 신청" >문화행사 신청</a></li>
+                </ul>
+              </li>
+              <li class="td5"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="인사말 & 연혁" >인사말 & 연혁</a></li>
+                  <li><a href="sub2/sub2.html"  title="시설 & 자료현황" >시설 & 자료현황</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용안내" >이용안내</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용자 서비스 헌장" >이용자 서비스 헌장</a></li>
+                  <li><a href="sub2/sub2.html"  title="조직도" >조직도</a></li>
+                  <li><a href="sub2/sub2.html"  title="상호대차&지하철 예약 대출" >상호대차&지하철 예약 대출</a></li>
+                  <li><a href="sub2/sub2.html"  title="책이음 서비스" >책이음 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="책나래 서비스" >책나래 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="북스타트" >북스타트</a></li>
+                  <li><a href="sub2/sub2.html"  title="오시는 길" >오시는 길</a></li>
+                  <li><a href="sub2/sub2.html"  title="새마을문고" >새마을문고</a></li>
+                </ul>
+              </li>
+              <li class="td6"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="대출·연장·예약·조회" >대출·연장·예약·조회</a></li>
+                  <li><a href="sub3/sub3.html"  title="희망도서 신청" >희망도서 신청</a></li>
+                  <li><a href="sub3/sub3.html"  title="바구니 보기" >바구니 보기</a></li>
+                  <li><a href="sub3/sub3.html"  title="검색 History" >검색 History</a></li>
+                  <li><a href="sub3/sub3.html"  title="나의 참여내역" >나의 참여내역</a></li>
+                </ul>
+              </li>
+            </ul><!-- class="twodepth" end -->
+          </div><!-- class="twodepth_wrap" end -->
+        </li>
+        <li class="od6"><a href="sub3/sub3.html" title="나의 도서관" tabindex="6">나의 도서관</a>
+          <div class="twodepth_wrap">
+            <ul class="twodepth">
+              <li class="td1"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="통합검색" >통합검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="신착도서 검색" >신착도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="간행물 검색" >간행물 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="비도서 검색" >비도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기대출도서 검색" >인기대출도서 검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="추천도서" >추천도서</a></li>
+                  <li><a href="sub1/sub1.html"  title="인기테마검색" >인기테마검색</a></li>
+                  <li><a href="sub1/sub1.html"  title="스마트도서관" >스마트도서관</a></li>
+                </ul>
+              </li>
+              <li class="td2"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="E-Book" >E-Book</a></li>
+                  <li><a href="sub2/sub2.html"  title="E-Learning" >E-Learning</a></li>
+                </ul>
+              </li>
+              <li class="td3"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="공지사항" >공지사항</a></li>
+                  <li><a href="sub3/sub3.html"  title="행사안내" >행사안내</a></li>
+                  <li><a href="sub3/sub3.html"  title="자주하는 질문" >자주하는 질문</a></li>
+                  <li><a href="sub3/sub3.html"  title="단순질문함" >단순질문함</a></li>
+                  <li><a href="sub3/sub3.html"  title="고객의견함" >고객의견함</a></li>
+                  <li><a href="sub3/sub3.html"  title="자료실" >자료실</a></li>
+                  <li><a href="sub3/sub3.html"  title="설문조사" >설문조사</a></li>
+                  <li><a href="sub3/sub3.html"  title="자원봉사자 모집" >자원봉사자 모집</a></li>
+                </ul>
+              </li>
+              <li class="td4"><a href="sub1/sub1.html" ></a>
+                <ul>
+                  <li><a href="sub1/sub1.html"  title="문화행사 안내" >문화행사 안내</a></li>
+                  <li><a href="sub1/sub1.html"  title="문화행사 신청" >문화행사 신청</a></li>
+                </ul>
+              </li>
+              <li class="td5"><a href="sub2/sub2.html" ></a>
+                <ul>
+                  <li><a href="sub2/sub2.html"  title="인사말 & 연혁" >인사말 & 연혁</a></li>
+                  <li><a href="sub2/sub2.html"  title="시설 & 자료현황" >시설 & 자료현황</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용안내" >이용안내</a></li>
+                  <li><a href="sub2/sub2.html"  title="이용자 서비스 헌장" >이용자 서비스 헌장</a></li>
+                  <li><a href="sub2/sub2.html"  title="조직도" >조직도</a></li>
+                  <li><a href="sub2/sub2.html"  title="상호대차&지하철 예약 대출" >상호대차&지하철 예약 대출</a></li>
+                  <li><a href="sub2/sub2.html"  title="책이음 서비스" >책이음 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="책나래 서비스" >책나래 서비스</a></li>
+                  <li><a href="sub2/sub2.html"  title="북스타트" >북스타트</a></li>
+                  <li><a href="sub2/sub2.html"  title="오시는 길" >오시는 길</a></li>
+                  <li><a href="sub2/sub2.html"  title="새마을문고" >새마을문고</a></li>
+                </ul>
+              </li>
+              <li class="td6"><a href="sub3/sub3.html" ></a>
+                <ul>
+                  <li><a href="sub3/sub3.html"  title="대출·연장·예약·조회" >대출·연장·예약·조회</a></li>
+                  <li><a href="sub3/sub3.html"  title="희망도서 신청" >희망도서 신청</a></li>
+                  <li><a href="sub3/sub3.html"  title="바구니 보기" >바구니 보기</a></li>
+                  <li><a href="sub3/sub3.html"  title="검색 History" >검색 History</a></li>
+                  <li><a href="sub3/sub3.html"  title="나의 참여내역" >나의 참여내역</a></li>
+                </ul>
+              </li>
+            </ul><!-- class="twodepth" end -->
+          </div><!-- class="twodepth_wrap" end -->
+        </li>
+      </ul><!-- class="onedepth end -->
+    </div><!-- id="menu" end -->
+  </div><!-- id="menu_wrap" end -->
+</header>
+<div layout:fragment="content">
+  <h1>여기를 대체함 </h1>
+</div>
+<footer>
+  <div id="footer">
+    <div id="footer_content">
+      <div id="bot_box">
+        <div class="footer_logo"></div>
+        <div id="bot_info">
+          <div class="policy_menu">
+            <ul>
+              <li class="privacy first"><a href="#">개인정보처리방침</a></li>
+              <li><a href="#">이메일집단수집거부</a></li>
+              <li><a href="#">우리지역도서관</a></li>
+              <li><a href="#">우리지역도서관</a></li>
+              <li><a href="#">영상정보처리기기운영 관리 방침</a></li>
+            </ul>
+          </div>
+          <div class="add cf">
+            <address>01133 서울특별시 강북구 솔매로49길 14(미아동)</address>
+            <span>전화 02-944-3180</span>
+            <span>팩스 02-944-3189</span>
+          </div>
+          <div class="copy">
+            COPYRIGHT 2010-2017 GANGBUK CULTURE INFORMATION LIBRARY ALL RIGHT RESERVED.
+          </div>
+        </div><!-- id="bot_info" end -->
+        <div class="etc_btn cf">
+          <a href="#" title="도서관위치전송" class="sms">도서관위치 sms전송</a>
+          <a href="#" title="맨위로" class="to_top">TOP</a>
+        </div>
+      </div><!-- id="bot_box" end -->
+    </div><!-- id="footer_content" end -->
+  </div><!-- id="footer" end -->
+</footer>
+</body>
+</html>

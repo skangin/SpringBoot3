@@ -1,0 +1,49 @@
+section{width:100%; background: #ffffff; height:742px;}
+#section{width: 1420px; margin: 0 auto; min-height: 119px;/* background: blue; opacity:0.6; */  }
+
+
+	#side_menu{width: 228px; height: 742px;  float: left; border-left: 1px solid #d9d9d9; border-right: 1px solid #d9d9d9;}
+	#side_menu h2{background: url(/images/mia_title1.png) 0 0 no-repeat; display: block; color: #ffffff; height: 140px; line-height: 140px; font-size: 22px; text-align: center;}
+	#side_menu .lnb{}
+	#side_menu .lnb>li{display: block; border-bottom: 1px solid #d9d9d9;}
+	#side_menu .lnb>li.on{background: #f7f7f7;}
+	#side_menu .lnb>li>a{display: block; font-size: 13px; color: #333333; line-height: 45px; padding-left: 20px;}
+	#side_menu .lnb>li.on>a{color: #ee5774; font-weight: 700;}
+
+
+	#content_box{width: 1105px; height: 742px; float: right; margin-left:80px;}
+		#title{width: 1104px; height: 30px; padding-top: 40px; padding-bottom: 25px; border-bottom: 2px solid #333333; }
+		#title>h3{color: #000000; font-size: 23px; line-height: 23px; display: block; float: left; font-weight: 700;}
+		#title>.local_path{float: right; display: block;}
+		#title>.local_path li{float: left; line-height: 30px; color: #999999; font-size: 17px; background: url(/images/icon_01.png) -123px 8px no-repeat; padding-left: 17px; margin-left: 9px;}
+		#title>.local_path li.home{background: none; padding-left: 0px; margin-left: 0px;}
+		#title>.local_path li.first{color: #454545;}
+		#title>.local_path li a{color: #999999; background: url(/images/icon_01.png) 0 8px no-repeat; display: block; padding-left: 18px;}
+
+
+		#faq{width: 1104px; height: 628px; padding-top: 10px;}
+		#faq .faq_title{margin-bottom: 10px;}
+		#faq .faq_title h4{margin-bottom: 0px; display: block; float: left; color: #000000; font-size: 16px; padding-left: 20px; font-weight: 700; line-height: 24px; background: url(/images/mia_bul.png) 0 4px no-repeat;}
+		#faq .faq_title span{display: block; float: left; line-height: 24px; margin-left: 10px;}
+
+		#faq .board{border-top: 1px solid #263252;}
+		#faq .board li{border-bottom: 1px solid #263252; display: block;}
+		#faq .board li a{ display: block; line-height: 22px; color: #454545; font-weight: 700; padding: 14px 40px 14px 30px; background: url(/images/icon_faq.png) 1000px 17px no-repeat;}
+		#faq .board li a.closed{cursor: pointer;}
+		#faq .board li a span{float: left; margin-left: -20px; display: block;}
+		#faq .board .answer{background: #f7f7f7; padding: 10px; line-height: 24px;}
+		#faq .board div.closed{display: none;}
+		/* #faq .board .list input:checked~span.answer{display: block;} */
+
+		#faq .page{text-align: center; width: 63px; margin:20px auto 0; font-size: 0; line-height: 1; height: 31px; display: block;}
+		#faq .page a{width: 31px; height: 31px; line-height: 31px; font-size: 13px; color: #666666; letter-spacing:-1px; overflow: hidden; vertical-align: middle; float: left;}
+		#faq .page a.current{background: #263252; color: #ffffff; font-weight: 700;}
+
+		#faq .search_bar{background: #f9f9f9; padding: 21px 0;}
+		#faq .search_bar span{width: 470px; margin: 0 auto; display: block;}
+		#faq .search_bar select{width: 163px; float: left; display: block; height: 33px; line-height: 33px; padding-left: 10px; border: 1px solid #d9d9d9;}
+		#faq .search_bar input[type="text"]{width: calc(100% - 251px); float: left; display: block; height: 31px; line-height: 31px; padding-left: 5px; border: 1px solid #d9d9d9; margin: 0 5px;}
+		#faq .search_bar .search_btn{width: 48px; float: left; display: block; height: 34px; line-height: 34px; padding-left: 20px; background: url(/images/icon_01.png) 11px -34px no-repeat #454545; text-align: center; color: #ffffff; font-weight: 700;}
+
+
+

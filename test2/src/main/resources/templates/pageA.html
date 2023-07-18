@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>pageA</title>
+    <link rel="stylesheet" href="/css/sub2.css">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/sub2_script.js"></script>
+</head>
+<body>
+
+<div layout:fragment="content">
+<section>
+    <div id="section" class="cf">
+        <div id="side_menu">
+            <h2>참여마당</h2>
+            <ul class="lnb">
+                <li><a href="#" tabindex="1">공지사항</a></li>
+                <li><a href="#" tabindex="2">행사안내</a></li>
+                <li class="on"><a href="#" tabindex="3">자주하는 질문</a></li>
+                <li><a href="#" tabindex="4">단순질문함</a></li>
+                <li><a href="#" tabindex="5">고객의견함</a></li>
+                <li><a href="#" tabindex="6">자료실</a></li>
+                <li><a href="#" tabindex="7">설문조사</a></li>
+                <li><a href="#" tabindex="8">자원봉사자 모집</a></li>
+            </ul>
+        </div><!-- id="side_menu" end -->
+        <div id="content_box" class="cf">
+            <div id="title">
+                <h3>자주하는 질문</h3>
+                <ul class="local_path cf">
+                    <li class="home"><a href="#">Home</a></li>
+                    <li>참여마당</li>
+                    <li class="first">자주하는 질문</li>
+                </ul>
+            </div><!-- id="title" end -->
+            <div id="faq">
+                <div class="faq_title cf">
+                    <h4>자주하는 질문</h4>
+                    <span>전체 : 19, 1 / 2</span>
+                </div>
+                <ul class="board">
+                    <li>
+                        <a href="#" class="question cf"><span>Q.</span>봉사활동을 하고 싶은데요. 신청은 어떻게 해야 하며, 확인서 발급이 가능한가요?</a>
+                        <div class="answer">
+                            봉사활동은 '1365자원봉사포털' http://www.1365.go.kr을 통해서 신청하며, 봉사활동 시간은 1일 4시간입니다.
+                            <br>
+                            <br>
+                            확인서는 봉사활동이 끝난 2,3일후 '1365자원봉사포털'에서 직접 출력하실 수 있습니다.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="question cf"><span>Q.</span>새로 바뀐 홈페이지에서 도서검색이나 로그인이 안됩니다.</a>
+                        <div class="answer">
+                            도서검색이 제대로 진행되지 않는 현상은 구버전의 익스플로러 웹브라우저(버전 9이하) 또는 구버전의 운영체제 (Windows XP이하)에서 주로 발생되는 문제로서
+                            <br>
+                            이용하시는 웹브라우저가 익스플로러 버전9 이하이신 경우 버전 10이상으로 업그레이드 하시거나 기타 브라우저 (구글 크롬 및 오페라, 사파리 등)를 이용하시면
+                            <br>
+                            정상적인 이용이 가능합니다.
+                            <br>
+                            위와 같은 조치로도 지속적으로 문제가 발생할 경우 우리 도서관 전산실(944-3115)로 문의하여 주시면 좀더 정확한 조치가 가능합니다.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="question cf"><span>Q.</span>도서관에 보관할 사물함이 있나요? 어떻게 이용할 수 있나요?</a>
+                        <div class="answer">
+                            도서관의 유료사물함은 보증금 10,000원과 월사용료 3,000원입니다. 사용을 원하시는 분은 도서관 자료실에서 신청하시면 됩니다.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="question cf"><span>Q.</span>책을 빌려서 보고 싶습니다. 대출절차는 어떻게 되며, 몇권까지 대출할 수 있나요?</a>
+                        <div class="answer">
+                            도서대출은 회원 1인당 1회 5권까지 대출이 가능합니다.(단, 우수회원은 최대 7권 ) 대출기간은 14일간이며 대출 신청시에는 반드시 본인 회원증을 소지하셔야 합니다.
+                            <br>
+                            <br>
+                            대출절차는 각 열람실에서 필요한 도서를 찾으신 후 각실 안내석에 회원증과 같이 제출하시거나 해당자료열람실에 무인대출반납기가 설치되어 있을 경우 무인대출반납기에서 직접 대출하실 수 있습니다.
+                            <br>
+                            <br>
+                            대출도서는 참고자료, 수험서, 연속간행물 및 비도서자료(CD, TAPE 등)를 제외한 모든 도서에 대해 가능합니다.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="question cf"><span>Q.</span>보고싶은 책을 집과 가까운 수유역에서 대출하고 싶은데요 신청 절차가 어떻게 되나요?</a>
+                        <div class="answer">
+                            1.홈페이지에 로그인합니다.
+                            <br>
+                            2.메인페이지 도서검색창 또는 소장자료검색 ->전체 페이지에서 소장도서를 검색합니다.
+                            <br>
+                            단 해당 도서가 사전류등 대출 불가도서이거나 어학자료, 컴퓨터서적과 같이 CD, 카세트테입 등 딸림자료가 있는 도서는 지하철예약대출 대상도서에서 제외됩니다.
+                            <br>
+                            4.지하철예약버튼을 클릭하면 대출할 지하철역을 선택하는 팝업창이 활성화 됩니다.
+                            <br>
+                            해당지하철역을 선택하시면 신청이 완료됩니다.
+                        </div>
+                    </li><!-- class="list" -->
+                </ul><!-- class="board" -->
+                <div class="page cf">
+                    <a href="#" class="current">1</a>
+                    <a href="#">2</a>
+                </div>
+                <div class="search_bar">
+                    <form action="#" name="faq_search">
+							<span class="cf">
+								<select name="search_condition" id="search_condition">
+									<option value="">전체</option>
+									<option value="question">제목</option>
+									<option value="answer">내용</option>
+								</select>
+								<input type="text" id="search_keyword" name="search_keyword"/>
+								<a href="#" class="search_btn">검색</a>
+							</span>
+                    </form>
+                </div><!-- class="search_bar" -->
+            </div><!-- id="faq" -->
+        </div><!-- id="content_box" -->
+    </div><!-- id="section" -->
+</section>
+</div>
+</body>
+</html>
