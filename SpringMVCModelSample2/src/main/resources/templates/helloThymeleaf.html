@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Thymeleaf</title>
+</head>
+<body>
+  <h1 th:text="${msg}"></h1>
+  <h1 th:text="'helloworld'"></h1>
+  <h1 th:text="'안녕하세요 ' + ${name} + ' 씨!'"></h1>
+  <h1 th:text="|안녕하세요 ${name}씨!|"></h1>
+  <h1>안녕하세요！[[${name}]]씨</h1>
+    <div th:with="a=1,b=2">
+        <span th:text="|${a}+${b} = ${a+b}|"></span>
+    </div>
+  <span th:text="1 > 10"></span>
+  <span th:text="1 < 10"></span>
+  <span th:text="1 >= 10"></span>
+  <span th:text="1 <= 10"></span>
+  <span th:text="1 == 10"></span>
+  <span th:text="1 != 10"></span>
+  <span th:text="길동 == 길동"></span>
+  <span th:text="길동 != 길동"></span>
+  <p th:text="${name} == '길동'  ?  '길동입니다!'  :  '길동이가 아닙니다'"></p>
+  <div th:if="${name} == '홍길동'">
+    <p>길동 씨입니다!</p>
+  </div>
+  <div th:switch="${name}">
+    <p th:case="길동" th:text="|${name}입니다!|"></p>
+    <p th:case="영희" th:text="|${name}입니다!|"></p>
+    <p th:case="철수" th:text="|${name}입니다!|"></p>
+    <p th:case="*">명부에 없습니다</p>
+  </div>
+</body>
+</html>
