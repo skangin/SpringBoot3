@@ -1,0 +1,78 @@
+﻿html{overflow-y: scroll;}
+*{margin: 0; padding: 0;}
+li{list-style: none;}
+a{text-decoration: none; color: #656565;}
+body{font-family: "맑은 고딕", "돋움", sans-serif; font-size: 13px; color: #606060;}
+img{border: 0px;}
+.fl{float: left;}
+.fr{float: right;}
+.cb {clear: both;}
+.cf:after{clear: both; content: ''; display: block;}
+.balloon{background: url(../images/favicon.png) 5px 10px no-repeat #ffffff; color: #ee5774; padding: 10px 10px 10px 27px; position: absolute; display: none; z-index: 30;}
+
+
+header{height: 256px; background: #ffffff; }
+	#lib_link{height:45px; background: #ee5774;  }
+		#lib_link_content{width: 1420px; margin: 0 auto;}
+			#lib_link_content ul{margin: 0, auto;}
+			#lib_link_content ul li{width: 137px; float: left;  text-align: center;  line-height: 45px; border-right: solid 1px #f36e87}
+			#lib_link_content ul li.big_child{width: 170px;}
+			#lib_link_content ul li.first_child{border-left: solid 1px #f36e87}
+			#lib_link_content ul li.on{background-color: #ffffff;}
+			#lib_link_content ul li.on a{color: #333333;}
+			#lib_link_content ul li a{display: block; font: normal 12px '돋움'; color: #ffffff;  line-height: 45px ;height: 45px;}
+	#gnb_wrap{height: 128px;  }	
+		#gnb{height:50px; padding-top: 40px; margin-bottom:40px; width: 1420px; margin: 0 auto; }
+			#gnb #name_logo{float: left; display: block;  }
+			
+			#gnb #search_box{float: left; margin: 2px 0 0 135px; width: 394px; position: relative;}
+			#gnb #search_box input[type="text"]{vertical-align: middle; width: 390px; padding: 0 50px 0 20px; border: 3px solid #263252; border-radius: 27px; height: 37px; line-height: 30px; outline: none;}
+			#gnb #search_box .search_btn{ position: absolute; display: block; top: 11px; right: -50px; width: 20px; height: 20px; background: url(../images/icon_01.png) 0 -89px no-repeat;}
+			
+			#gnb #utility{display: block; line-height: 34px; margin-top: 2px; float: right;}
+			#gnb #utility a{display: block; float: left; margin-left: 25px; }
+			#gnb #utility span{display: block; float: left; margin-left: 25px;}
+			#gnb #utility a.first{margin-left: 0;}
+			#gnb #utility a.login{background: url(../images/icon_01.png) -117px -82px no-repeat; padding-left: 19px;}
+			#gnb #utility a.plus{width: 17px; height: 17px; background: url(../images/icon_01.png) 0 0 no-repeat; background-position: 0 -165px; margin: 9px 5px 0 10px;}
+			#gnb #utility a.minus{width: 17px; height: 17px; background: url(../images/icon_01.png) 0 0 no-repeat; background-position: -27px -165px; margin: 9px 0 0 0;}
+			
+		#menu_wrap{height:80px; border-top: 1px solid #d9d9d9; border-bottom: 1px solid #d9d9d9; position: relative;}
+			#menu_wrap:hover .twodepth_wrap{display: block;}
+			/* onedepth */
+			#menu_wrap #menu{width: 1420px; margin: 0 auto;}
+			#menu_wrap #menu .onedepth>li{display: block; float: left; width:235px;}
+			#menu_wrap #menu .onedepth>li.on a{color: #ee5774;}
+			#menu_wrap #menu .onedepth>li>a{display: block; font-size: 20px; color: #333333; font-weight: 700; text-align: center; line-height: 80px;}
+			#menu_wrap #menu .od1:hover .td1{background-color: red;} 
+			#menu_wrap #menu .onedepth>li>a:hover{color: #ee5774;}
+			
+			/* twodepth */
+			#menu_wrap .twodepth_wrap{position: absolute; top: 81px; left: 0; width: 100%; height: 372px; display: none; color:#666666; border-bottom: 1px solid #ee5774;   background: #ffffff; z-index:20; min-width: 1420px;}				
+			.twodepth_wrap .twodepth{width: 1420px; margin: 0 auto; background: #ffffff;}
+			#menu .twodepth_wrap .twodepth li{line-height: 30px; width: 235px;}
+			#menu .twodepth_wrap .twodepth>li{float:left; height:330px; margin: 20px 0; border-right: solid 1px #f7f7f7;}
+			#menu .twodepth_wrap .twodepth li:hover>a{font-weight:bold; color: #333333;}
+			#menu .twodepth_wrap .twodepth li a{display: block; padding-left: 55px; color: #666666; font-size: 14px;}
+			
+			
+		
+#footer{border-top:solid 1px #a1a1a2;}
+	#footer_content{width: 1420px; margin: 0 auto;}	
+		#bot_box{height: 140px; padding-top: 30px; display: block; line-height: 24px;}
+			#bot_box .footer_logo{width: 239px; height: 39px; float: left; background: url(../images/mia_bottom_logo.png) 0 0 no-repeat; margin-top: 5px;}
+			#bot_box #bot_info{float: left; line-height: 24px; margin-left: 25px;  }
+			#bot_box .policy_menu{float: left; line-height: 24px;  }
+			#bot_box .policy_menu li{display: block; float: left; background: url(../images/icon_01.png) -129px -138px no-repeat; padding-left: 10px; margin-left: 9px;}
+			#bot_box .policy_menu li.first{padding-left: 0px; margin-left: 0px; background: none;}
+			#bot_box .policy_menu li a{display: block; color: #666666; font-size: 13px; line-height: 24px;}
+			#bot_box .policy_menu .privacy a{color: #000000; font-weight: 700;}
+			#bot_box .add address{display: block; float: left;}
+			#bot_box .add span{display: block; float: left; background: url(../images/icon_01.png) -129px -138px no-repeat;
+			padding-left: 10px; margin-left: 9px;}
+			
+			#bot_box .etc_btn{float: right; margin-right: 55px; padding-top: 25px;}	
+			#bot_box .etc_btn a{display: block; float: left; height: 34px; height: 34px; line-height:34px; color: #ffffff; text-align: center; font-size: 13px; width: 145px;}
+			#bot_box .etc_btn a.sms{background-color: #ee5774;}	
+			#bot_box .etc_btn a.to_top{background: url(../images/icon_01.png) 40px -125px no-repeat #454545; width:43px; font-size: 12px; font-weight: 700; padding-right: 15px; margin-left:5px;}	
+			

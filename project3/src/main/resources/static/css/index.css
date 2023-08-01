@@ -1,0 +1,121 @@
+﻿#index_back{background: url(../images/main_bg.png) 0 0 repeat;}
+section{/* background: blue; opacity:0.6; */padding-top: 40px; padding-bottom: 30px; }
+	
+	#section{width: 1420px; margin: 0 auto;}
+	section #section h3{padding: 20px 0 10px 30px; display: block; color: #000000; font-size: 16px; line-height: 30px;}
+		
+		#up_content{height: 470px;}
+			/* 로그인 박스 */
+			#my_library{width: 280px; height: 468px; border: 1px solid #d9d9d9; float: left; padding: 0 30px; margin-left: 0; background: #ffffff;}
+			#my_library img{margin-left: 150px;}
+			#up_content>#my_library>h3{padding: 20px 0 10px; display: block; color: #000000; font-size: 18px; line-height: 30px; font-weight: 700;}
+			#my_library .login_box{width: 100%; height: 200px;}
+			#my_library .login_box h4{color: #666666; font-size: 15px; display: block; line-height: 17px; padding-bottom: 12px; font-weight: 400;}
+			#my_library .login_box ul{display: block; width: 100%;}
+			#my_library .login_box ul li{margin-top: 6px;}
+			#my_library .login_box ul li.first{margin-top: 0;}
+			#my_library .login_box ul li.btn{margin-top: 10px;}
+			#my_library .login_box input[type="text"]{width: calc(100% - 12px); padding-left: 10px; height: 31px; line-height: 31px; border: 1px solid #d9d9d9;}
+			#my_library .login_box input[type="password"]{width: calc(100% - 12px); padding-left: 10px; height: 31px; line-height: 31px; border: 1px solid #d9d9d9;}
+			#my_library .login_box input{display: block;}
+			.mute{color: #cccccc;}
+			#my_library .login_box li.btn a{background: #ee5774;}
+			#my_library .login_box li a{display: block; width: 100%; height: 34px; line-height: 34px; text-align: center; color: #ffffff; font-weight: 400;}
+			#my_library .login_box span{display: block; margin-top: 10px;}
+			#my_library .login_box span a{display: block; float: left; line-height: 16px; font-size: 14px; color: #999999; background: url(../images/bul_01.png) 0 4px no-repeat; padding-left: 9px; margin-left: 8px;}
+			#my_library .login_box span a.first{ background: none; padding-left: 0px; margin-left: 0px;}
+			#my_library .contact a{display: block; float: left; background: url(../images/bul_01.png) 115px -65px no-repeat #999999; width: 120px; height: 27px; line-height: 27px; color: #ffffff; font-weight: 400; font-size: 14px; padding-left: 10px;}
+			#my_library .contact a.first{margin-right: 9px;}
+			
+			
+			
+			
+			
+			#poster{width: 703px; height: 470px; margin-left: 18px; float: left; position: relative; overflow: hidden;}
+			#poster .left{position: absolute; top: 50%; left: 10px; background: url(../images/controller.png) 0 0 no-repeat; width: 19px; height: 33px; display: block; text-indent: -9999px; border: 0; z-index: 10; cursor: pointer;}
+			#poster .animation_canvas{width: 700px; height: 470px; overflow: hidden;  position: relative; clear:left;}
+			#poster .slider_panel{width: 3500px; position: relative;}
+			#poster .slider_image{float:left; width: 700px; height: 470px;}
+			#poster .control_panel{position: absolute; top: 450px; left: 50%; margin-left: -38px; height: 15px; overflow: hidden;}
+			#poster .control_button{width: 15px; height: 46px; position: relative; float: left; cursor: pointer; background: url(../images/point_button.png);}
+			#poster .control_button:hover{top: -16px;}
+			#poster .control_button.active{top: -31px;}
+			#poster .slider_text_panel{position: absolute; bottom: 0px; right: 0px; background: #000000; width: 50px; height: 30px; display: block;  opacity: 0.7; z-index: 10;}
+			#poster .slider_text{position: absolute; color:#ffffff; font-weight: bold; text-align: center;}
+			
+			#poster .right{position: absolute; top: 50%; right: 10px; background: url(../images/controller.png) -75px 0 no-repeat; width: 19px; height: 33px; display: block; text-indent: -9999px; border: 0; z-index: 10; cursor: pointer;}
+			
+			
+			/* 휴관일 */
+			#event{width: 340px; height: 470px; background: url(../images/shadow_bg.png) 0 bottom no-repeat; float: right; margin-left: 14px;}
+			#event .event_box{border: 1px solid #d9d9d9; width:338px; height: 468px; background: #dbe7f6; position: relative;}
+			#event .event_box .holiday{background: #ffffff;}
+			#event .event_box .holiday dt{display: block; position: absolute; top: 20px; right: 30px; color: #263525; font-size: 30px; text-align: right; line-height: 50px;}
+			#event .event_box .holiday dt strong{font-size: 48px; letter-spacing: -7px; padding-right: 10px; font-weight: 700;}
+			#event .event_box .holiday dd{width: 231px; height: 50px; display: block; margin: 30px auto 0;}
+			#event .event_box .holiday dd span{display: block; float: left; width: 31px; height: 31px; background: url(../images/icon_circle.png) 0 0 no-repeat; text-align: center; line-height: 28px; color: #ffffff; overflow: hidden; font-size: 12px; font-weight: 900; margin-left: 9px;}
+			#event .event_box .holiday dd span.first{margin-left: 0;}
+			#event .event_box .event_list ul{padding: 0 30px;}
+			#event .event_box .event_list li{display: block; color: #263252; font-size: 12px; letter-spacing: -1px; line-height: 20px; border-top: 1px solid #f6f9fd; padding-top: 7px; margin-top: 7px;}
+			#event .event_box .event_list li.first{border-top: 0; padding-top: 0; margin-top: 0;}
+			#event .event_box .event_list a{color: #263252; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700;}
+			#event .event_box .event_list li div{line-height: 24px;}
+			#event .event_box .event_list div span{display: block; float: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; background: url(../images/bul_01.png) 0 8px no-repeat; padding-left: 5px;}
+			#event .event_box .event_list span.first{width: 51px; background: none; padding-left: 0;}
+			#event .event_box .event_list span.second{width: 74px;}
+			#event .event_box .event_list span.third{width: calc(100% - 135px);}
+			#event .event_box a.more{display: block; position: absolute; top: -1px; right: -1px; background: url(../images/btn_more.png) 0 0 no-repeat; width: 41px; height: 41px; text-indent: -9999px;}
+						
+			
+		#middle_content{height: 470px; margin-top: 15px;}
+					
+			#tab_board{width: 370px; height: 470px; background:#ffffff;  float: left; position: relative; border: 1px solid #d9d9d9;}
+			#tab_board .tabs{margin-top: 45px;}
+			.tabs li{float: left; padding: 0 4px 0 0;}
+			.tabs li a{float: left; color: #606060; background: #f2f2f2; padding: .45em 1.25em; display: none; border-radius: 4px 4px 0 0; font-weight: bold; text-decoration: none;}
+			.tabs li a:hover{text-decoration: underline;}
+			.tabs li a.on{ color: #ee5774; cursor: default;}
+			.tabs li a.on:hover{text-decoration: none;}
+			#tab_board .panels{background: #f2f2f2;}
+			#tab_board .panel{display: block; padding: 0 10px 0;}
+			#tab_board .panel a{display: block; font-size: 15px;line-height: 40px; background: url(../images/bul_01.png) 0 -23px no-repeat; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-left: 10px;}
+			#tab_board a.more{display: block; position: absolute; top: -1px; right: -1px; background: url(../images/btn_more.png) 0 0 no-repeat; width: 41px; height: 41px; text-indent: -9999px;}
+			
+			#recommend{width: 671px; height: 470px; background:#ffffff; margin-left: 18px; float: left; border: 1px solid #d9d9d9; position: relative;}
+			#recommend>h3{padding: 20px 0 10px 30px; display: block; color: #000000; font-size: 18px; line-height: 30px; font-weight: 700;}
+			#recommend div{width: 640px; display: block; position: absolute; top: 110px; left: 30px;}			
+			#recommend div img{height: 161px;}
+			#recommend div a{float: left; height: 100%; display: block; width: 118px; margin-left: 100px;}
+			#recommend div a.first{margin-left: 30px;}
+			#recommend div dl{padding-top: 10px;}
+			#recommend div dl dt{font-weight: 700; color: #333333; line-height: 22px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+			#recommend div dl dd{line-height: 18px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+			#recommend .more{display: block; position: absolute; top: -1px; right: -1px; background: url(../images/btn_more.png) 0 0 no-repeat; width: 41px; height: 41px; text-indent: -9999px;}
+			
+			#quick_menu{width: 341px; height: 470px; background: url(../images/quick_mia1.png) 0 0 no-repeat; float: right; text-align: center; position: relative;}
+			section #section #quick_menu h3{width: 170px; height: 117px; line-height: 117px; padding: 0; display: block; color: #ffffff; padding: 0; font-size: 18px; font-weight: 400;}
+			#quick_menu>div>a{width: 170px; height: 117px; padding: 0; display: block; color: #333333; font-weight: 400; float: left;}
+			#quick_menu>div>a.first{position: absolute; float: none; top: 0; right: 0;}
+			#quick_menu a span{display: block; line-height: 33px; padding-top: 75px; background: url(../images/quick_icon.png) 0 0 no-repeat; font-size: 16px;}
+			#quick_menu a.first span{background-position: -92px -520px;}
+			#quick_menu a.second span{background-position: -92px 22px;}
+			#quick_menu a.third span{background-position: -92px -87px;}
+			#quick_menu a.fourth span{background-position: -92px -192px;}
+			#quick_menu a.fifth span{background-position: -92px -630px;}
+			#quick_menu a.sixth span{background-position: -92px -298px;}
+			#quick_menu a.seven span{background-position: -92px -407px;}	
+			
+
+#bot_banner{border-top: 2px solid #114fa0; background: #ffffff; padding: 5px 0; height: 73px; }
+	#bot_banner #bot_banner_content{width: 1420px; margin: 0 auto; position: relative; }
+	#bot_banner .slide{position: absolute; top: 0; left: 0; background: #ffffff;}	 
+	#bot_banner .alt{display: none;}	
+	#bot_banner a{display:block; float: left; height: 73px;}
+	#bot_banner a.first{margin-left:19px;}
+	#bot_banner a.last{margin-right:19px;}
+	#bot_banner a img{display: block; margin: 0 auto;}
+	/* #bot_banner #banner_button{display:block; float: left; margin-top: 24px;}
+	#bot_banner a.prev_button{width: 24px; height:24px; background: url(../images/banner_controller.jpg) 0 0 no-repeat; margin-left: 50px;}
+	#bot_banner a.pause_button{width: 22px; height:24px; background: url(../images/banner_controller.jpg) -24px 0 no-repeat;}
+	#bot_banner a.next_button{width: 24px; height:24px; background: url(../images/banner_controller.jpg) -69px 0 no-repeat;} */
+	
