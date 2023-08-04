@@ -40,13 +40,16 @@
 		#notice_board .page a{width: 31px; height: 31px; line-height: 31px; float: left; font-size: 13px; color: #666666; letter-spacing: -1px; display: block; overflow: hidden; vertical-align: middle;}
 		#notice_board .page a.first{margin-right: 5px; background: url(../images/btn_paging.png) 0 0 no-repeat; text-indent: -9999px;}
 		#notice_board .page a.prev{margin-right: 10px; background: url(../images/btn_paging.png) -30px 0 no-repeat; text-indent: -9999px;}
-		#notice_board .page a.current{background: #263252; color: #ffffff; font-weight: 700;}
+		#notice_board .page strong.current{background: #263252; color: #ffffff; font-weight: 700; width: 31px; height: 31px; line-height: 31px; float: left; font-size: 13px; letter-spacing: -1px; display: block; overflow: hidden; vertical-align: middle;}
 		#notice_board .page a.next{margin-left: 10px; background: url(../images/btn_paging.png) -60px 0 no-repeat; text-indent: -9999px;}
 		#notice_board .page a.last{margin-left: 5px; background: url(../images/btn_paging.png) -90px 0 no-repeat; text-indent: -9999px;}
-		
-		#notice_board .search_bar{background: #f9f9f9; padding: 21px 0;}
+
+		#notice_board .write_button{float: right;}
+
+		#notice_board .search_bar{background: #f9f9f9; padding: 21px 0; margin-top: 20px;}
 		#notice_board .search_bar span{width: 470px; margin: 0 auto; display: block;}
 		#notice_board .search_bar select{width: 163px; float: left; display: block; height: 33px; line-height: 33px; padding-left: 10px; border: 1px solid #d9d9d9;}
 		#notice_board .search_bar input[type="text"]{width: calc(100% - 251px); float: left; display: block; height: 31px; line-height: 31px; padding-left: 5px; border: 1px solid #d9d9d9; margin: 0 5px;}
 		#notice_board .search_bar .search_btn{width: 48px; float: left; display: block; height: 34px; line-height: 34px; padding-left: 20px; background: url(../images/icon_01.png) 11px -34px no-repeat #454545; text-align: center; color: #ffffff; font-weight: 700;}
+
 		
